@@ -19,6 +19,14 @@ class GameTests(unittest.TestCase):
         self.rollMany(20, 1)
         self.assertEqual(self.game.score(), 20)
 
+    def test_can_bowl_spare(self):
+        self.game.roll(5)
+        self.game.roll(5)
+        self.game.roll(2)
+        self.game.roll(2)
+        self.rollMany(16, 0)
+        self.assertEqual(self.game.score(), 16)
+
     def rollMany(self, times, pins):
         for roll in range (0, times):
             self.game.roll(pins)

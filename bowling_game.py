@@ -9,8 +9,19 @@ class Game():
         self.currentRoll += 1
 
     def score(self):
-        myScore = 0
-        for i, val in enumerate(self.rolls):
-            myScore += val
 
+        myScore = 0
+        currentRoll = 0
+
+        for frame in range(0, 10):
+            if (self.isSpare(currentRoll)):
+                myScore += 10 + self.rolls[currentRoll + 2]
+            else:
+                myScore += self.rolls[currentRoll] +  self.rolls[currentRoll + 1]
+
+            currentRoll += 2
         return myScore
+
+    def isSpare(self, currentRoll):
+        return self.rolls[currentRoll] + self.rolls[currentRoll + 1] == 10
+
