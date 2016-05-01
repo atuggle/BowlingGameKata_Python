@@ -1,4 +1,3 @@
-
 class Game():
 
     rolls = [0] * 21 # if perfect game get extra roll at end
