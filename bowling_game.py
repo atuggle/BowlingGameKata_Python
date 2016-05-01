@@ -14,14 +14,21 @@ class Game():
         currentRoll = 0
 
         for frame in range(0, 10):
-            if (self.isSpare(currentRoll)):
+            if (self.isStrike(currentRoll)):
+                myScore += 10 + self.rolls[currentRoll + 1] + self.rolls[currentRoll + 2]
+                currentRoll += 1
+            elif (self.isSpare(currentRoll)):
                 myScore += 10 + self.rolls[currentRoll + 2]
+                currentRoll += 2
             else:
                 myScore += self.rolls[currentRoll] +  self.rolls[currentRoll + 1]
+                currentRoll += 2
 
-            currentRoll += 2
         return myScore
 
     def isSpare(self, currentRoll):
         return self.rolls[currentRoll] + self.rolls[currentRoll + 1] == 10
+
+    def isStrike(self, currentRoll):
+        return self.rolls[currentRoll] == 10
 

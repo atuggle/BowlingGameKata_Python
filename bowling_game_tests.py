@@ -27,6 +27,14 @@ class GameTests(unittest.TestCase):
         self.rollMany(16, 0)
         self.assertEqual(self.game.score(), 16)
 
+    def test_can_bowl_strike(self):
+        self.game.roll(10)
+        self.game.roll(5)
+        self.game.roll(2)
+        self.game.roll(2)
+        self.rollMany(15, 0)
+        self.assertEqual(self.game.score(), 26)
+
     def rollMany(self, times, pins):
         for roll in range (0, times):
             self.game.roll(pins)
