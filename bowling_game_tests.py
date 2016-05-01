@@ -5,12 +5,19 @@ class GameTests(unittest.TestCase):
 
     game = Game()
 
+    def setUp(self):
+        self.game = Game()
+
     def test_game_not_null(self):
         self.assertIsNotNone(self.game)
 
     def test_can_bowl_gutter_game(self):
         self.rollMany(20, 0)
         self.assertEqual(self.game.score(), 0)
+
+    def test_can_bowl_all_ones(self):
+        self.rollMany(20, 1)
+        self.assertEqual(self.game.score(), 20)
 
     def rollMany(self, times, pins):
         for roll in range (0, times):
