@@ -35,6 +35,10 @@ class GameTests(unittest.TestCase):
         self.rollMany(15, 0)
         self.assertEqual(self.game.score(), 26)
 
+    def test_can_bowl_perfect_game(self):
+        self.rollMany(12, 10)
+        self.assertEqual(self.game.score(), 300)
+
     def rollMany(self, times, pins):
         for roll in range (0, times):
             self.game.roll(pins)
